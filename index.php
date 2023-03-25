@@ -52,7 +52,7 @@ $result = $mysqli->query($sql);
 
 
 while($myRow = $result->fetch_array()) {
-   echo "<tr><td>" . $myRow['id'] . "</td><td>" . $myRow['name'] . "</td></tr>\n";
+   echo $myRow['id'] . $myRow['name'];
  }
 ?>
 </body>
