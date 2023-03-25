@@ -28,7 +28,7 @@ if ($mysqli->connect_errno) {
 	
 
 
-
+<?php
 $sql = "SELECT * FROM coffie";
 
 // Här körs queryn mot databasen
