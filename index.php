@@ -10,25 +10,25 @@
 $mysqli = new mysqli('localhost', 'debian-sys-maint', 'dmM1hsMuy60U8YtP', 'sys');
 
 
-//Kontrollerar teckentabell
+
 if (!$mysqli->set_charset("utf8")) {
   echo "Fel vid inställning av teckentabell utf8: %s\n". $mysqli->error;
 }
 else {
-//   // Här kan du skriva ut något om du vill ha en bekräftelse på att det funkar
+
 echo "Nuvarande teckenkodningstabell: %s\n". $mysqli->character_set_name();
 }
 
 if ($mysqli->connect_errno) {
-  // Om något gått fel skrivs felmeddelande ut
+
   echo "Misslyckades att ansluta till MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 
 ?>
-	<?php
+	
 
 
-// Här ska ni formulera en SQL-query som hämtar *alla fält och alla rader* från tabellen film.
+
 $sql = "SELECT * FROM coffie";
 
 // Här körs queryn mot databasen
@@ -45,6 +45,8 @@ $result = $mysqli->query($sql);
 		<br>
 		<input type="submit" value="Submit">
 	</form>
+	
+	
 	<?php
 
 
