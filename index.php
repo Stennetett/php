@@ -51,9 +51,9 @@ $result = $mysqli->query($sql);
 	<?php
 
 
-$myRow = $result->fetch_array()){
+$myRow = $result->fetch_array());
    echo $myRow['id'] . $myRow['name'];
-}
+
 ?>
 </body>
 </html>
