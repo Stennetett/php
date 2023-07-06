@@ -19,11 +19,7 @@ transformBtn.addEventListener('click', function() {
   svg.style.transform = 'rotate(45deg)';
   svg.style.fill = 'red';
 });
-In the above example, when the "Transform" button is clicked, the SVG is rotated by 45 degrees and the fill color is changed to red. You can modify the transformation or styles based on your specific requirements.
 
-Note: Make sure to place the JavaScript code either before the closing </body> tag or inside an event listener for the DOMContentLoaded event to ensure that the elements are available when the code is executed.
-
-Remember to link the JavaScript file to your HTML file using a <script> tag or include it directly within a <script> tag if you prefer.
 
 
 
