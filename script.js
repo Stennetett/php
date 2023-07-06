@@ -16,8 +16,8 @@ const transformBtn = document.getElementById('transform-btn');
 // Add click event listener to the button
 transformBtn.addEventListener('click', function() {
   // Modify the SVG properties or apply CSS styles
-  svg.style.transform = 'rotate(45deg)';
-  svg.style.fill = 'red';
+  svg.style.transform = 'scale(1.2)';
+  svg.translateZ(0px);
 });
 
 
