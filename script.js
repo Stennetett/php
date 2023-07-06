@@ -17,7 +17,7 @@ const transformBtn = document.getElementById('transform-btn');
 transformBtn.addEventListener('click', function() {
   // Modify the SVG properties or apply CSS styles
   svg.style.transform = 'scale(1.2)';
-  svg.translateZ(0px);
+  svg.translateZ = "0px";
 });
 
 
