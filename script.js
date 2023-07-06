@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Get references to the SVG and button elements
-const svg = document.getElementById('visual');
+const svg = document.querySelector('g');
 const transformBtn = document.getElementById('transform-btn');
 
 // Add click event listener to the button
