@@ -1,5 +1,3 @@
-
-
 const Application = PIXI.Application;
 
 const app = new Application(
@@ -22,7 +20,8 @@ const rectangle = new Graphics();
 rectangle.beginFill("#FFFFFF")
     .drawRect(200, 200, 100, 120)
     .endFill();
-
+    rectangle.x = 200;
+    rectangle.y = 200;
 app.stage.addChild(rectangle);
 
 
@@ -60,6 +59,8 @@ function loop(delta) {
 const gubbeSprite = PIXI.Sprite.from("./images/profile-icon.gif");
 gubbeSprite.x = 200;
 gubbeSprite.y = 200;
+gubbeSprite.scale.x += -0.5;
+gubbeSprite.scale.y += -0.5;
 //middle of image (rotation from middle)
 gubbeSprite.anchor.x = 0.5;
 gubbeSprite.anchor.y = 0.5;
@@ -70,6 +71,36 @@ gubbeSprite.on('pointerdown', function () {
     gubbeSprite.scale.x += 0.01;
     gubbeSprite.scale.y += 0.01;
 });
+
+
+
+gubbeSprite.on("pointerdown", ()=>
+{
+    console.log("yoo");
+}
+);
+  const ondragStart = event => {
+    gubbeSprite.data = event.data;
+    gubbeSprite.dragging = true;
+  };
+  const ondragEnd = event => {
+    delete gubbeSprite.data;
+    gubbeSprite.dragging = false;
+  };
+  const ondragMove = event => {
+ if (gubbeSprite.dragging === true) {
+      const newPosition = gubbeSprite.data.getLocalPosition(gubbeSprite.parent);
+      gubbeSprite.x = newPosition.x;
+      gubbeSprite.y = newPosition.y;
+ }
+  };
+    // Register the pointer events
+    gubbeSprite.on('pointerdown', ondragStart)
+      .on('pointerup', ondragEnd)
+      .on('pointerupoutside', ondragEnd)
+      .on('pointermove', ondragMove);
+
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -103,3 +134,6 @@ document.addEventListener('keydown', async function (e) {
     }
       
 });
+
+
+
