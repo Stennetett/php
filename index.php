@@ -1,36 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Basic HTML Page</title>
+</head>
+<body>
+  <h1>Welcome to My Basic HTML Page</h1>
 
-    <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-$servername = "localhost";
-$username = "newuser";
-$password = "HxvRvyZsSA4h4RA@";
-// Create connection
-$conn = new mysqli($servername, $username, $password, "sys");
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+  <p>This is a simple HTML page.</p>
 
-$query = "SELECT * FROM day_plan";
-$result = $mysqli->query($query);
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
 
-// Check if the query was successful
-if ($result) {
-    // Loop through the rows and display the data
-    while ($row = $result->fetch_assoc()) {
-        echo "ID: " . $row['id'] . "<br>";
-        echo "Time: " . $row['time'] . "<br>";
-        echo "Task: " . $row['task'] . "<br>";
-        echo "Description: " . $row['description'] . "<br><br>";
-    }
+  <p>Here's an image:</p>
+  <img src="image.jpg" alt="Sample Image">
 
-    // Free the result set
-    $result->free();
-} else {
-    echo "Error executing the query: " . $mysqli->error;
-}
+  <p>Visit <a href="https://www.example.com">Example Website</a> for more information.</p>
 
-// Close the MySQLi connection
-$mysqli->close();
-?>
+</body>
+</html>
+
+ 
