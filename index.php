@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 $query = "SELECT * FROM day_plan";
-$result = $mysqli->query($query);
+$result = $conn->query($query);
 
 // Check if the query was successful
 if ($result) {
@@ -27,9 +27,9 @@ if ($result) {
     // Free the result set
     $result->free();
 } else {
-    echo "Error executing the query: " . $mysqli->error;
+    echo "Error executing the query: " . $conn->error;
 }
 
 // Close the MySQLi connection
-$mysqli->close();
+$conn->close();
 ?>
