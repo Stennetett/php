@@ -1,7 +1,11 @@
 
-
- 
-  <?php
+<!DOCTYPE html>
+<html>
+<head>
+<title>My First HTML Page</title>
+</head>
+<body>
+   <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 $servername = "localhost";
@@ -36,3 +40,10 @@ if ($result) {
 // Close the MySQLi connection
 $mysqli->close();
 ?>
+<h1>This is my first HTML page!</h1>
+<p>I'm so excited to be learning HTML.</p>
+</body>
+</html>
+
+ 
+
