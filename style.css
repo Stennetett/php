@@ -14,32 +14,6 @@ a {
 }
 
 
-.menu-row {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: orange;
-    display: flex;
-    justify-content: center;
-
-}
-
-.menu-row ul {
-    list-style-type: none;
-width: 70%;
-   
-  
-}
-
-.menu-row li {
-    
-    float: left;
-    font-family: 'Roboto', sans-serif;
-    font-size: 37px;
-    padding-left: 10%;
-
-}
-
 .game{
     position: absolute;
     top: 0;
