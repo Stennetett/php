@@ -23,8 +23,8 @@ const rectangle = new Graphics();
 rectangle.beginFill("#FFFFFF")
     .drawRect(200, 200, 100, 120)
     .endFill();
-    rectangle.x = 200;
-    rectangle.y = 200;
+rectangle.x = 200;
+rectangle.y = 200;
 app.stage.addChild(rectangle);
 
 
@@ -37,24 +37,28 @@ const style = new PIXI.TextStyle({
     fontSize: 200,
     fill: 0xff00fa
 })
-
-const myText = new PIXI.Text("heey", style)
+let number = 0;
+let myText = new PIXI.Text(number, style)
 
 app.stage.addChild(myText);
 
 myText.style.wordWrap = true;
 myText.style.wordWrapWidth = 100;
-
 app.ticker.add(delta => loop(delta))
 
 function loop(delta) {
+
+    number += 1;
     // gubbeSprite.x += 0.2;
-    gubbeSprite.rotation += 0.0001;
+    gubbeSprite.rotation += 0.1;
     const rect = new Graphics();
     rect.beginFill("#FFFFFF")
-        .drawRect(Math.random() * app.screen.width, Math.random() * app.screen.height, 1, 1)
+        .drawRect(Math.random() * app.screen.width, Math.random() * app.screen.height, 3, 3)
         .endFill();
     app.stage.addChild(rect);
+    console.log(number);
+
+
 }
 
 
@@ -71,37 +75,36 @@ app.stage.addChild(gubbeSprite);
 gubbeSprite.interactive = true;
 gubbeSprite.buttonMode = true;
 gubbeSprite.on('pointerdown', function () {
-    gubbeSprite.scale.x += 0.01;
-    gubbeSprite.scale.y += 0.01;
+    gubbeSprite.scale.x += 0.1;
+    gubbeSprite.scale.y += 0.1;
 });
 
 
 
-gubbeSprite.on("pointerdown", ()=>
-{
+gubbeSprite.on("pointerdown", () => {
     console.log("yoo");
 }
 );
-  const ondragStart = event => {
+const ondragStart = event => {
     gubbeSprite.data = event.data;
     gubbeSprite.dragging = true;
-  };
-  const ondragEnd = event => {
+};
+const ondragEnd = event => {
     delete gubbeSprite.data;
     gubbeSprite.dragging = false;
-  };
-  const ondragMove = event => {
- if (gubbeSprite.dragging === true) {
-      const newPosition = gubbeSprite.data.getLocalPosition(gubbeSprite.parent);
-      gubbeSprite.x = newPosition.x;
-      gubbeSprite.y = newPosition.y;
- }
-  };
-    // Register the pointer events
-    gubbeSprite.on('pointerdown', ondragStart)
-      .on('pointerup', ondragEnd)
-      .on('pointerupoutside', ondragEnd)
-      .on('pointermove', ondragMove);
+};
+const ondragMove = event => {
+    if (gubbeSprite.dragging === true) {
+        const newPosition = gubbeSprite.data.getLocalPosition(gubbeSprite.parent);
+        gubbeSprite.x = newPosition.x;
+        gubbeSprite.y = newPosition.y;
+    }
+};
+// Register the pointer events
+gubbeSprite.on('pointerdown', ondragStart)
+    .on('pointerup', ondragEnd)
+    .on('pointerupoutside', ondragEnd)
+    .on('pointermove', ondragMove);
 
 
 function sleep(ms) {
@@ -110,31 +113,33 @@ function sleep(ms) {
 
 document.addEventListener('keydown', async function (e) {
     if (e.key === 'ArrowRight')
-    
-    for (let index = 0; index <10; index++) {
-        gubbeSprite.x += (index % 5) * 0.5;
-     
-      
-    }
-       
+
+        for (let index = 0; index < 10; index++) {
+            gubbeSprite.x += (index % 5) * 0.5;
+
+
+        }
+
     if (e.key === 'ArrowLeft')
-    for (let index = 0; index <10; index++) {
-        gubbeSprite.x -= 7;
-         await sleep(index * 5);
-    }
-       
+        for (let index = 0; index < 10; index++) {
+            gubbeSprite.x -= 7;
+            await sleep(index * 5);
+        }
+
 
     if (e.key === 'ArrowDown')
-    for (let index = 0; index <10; index++) {
-        gubbeSprite.y += index;
-         await sleep(index * 5);
-    }
-        
+        for (let index = 0; index < 10; index++) {
+            gubbeSprite.y += index;
+            await sleep(index * 5);
+        }
+
     if (e.key === 'ArrowUp')
-    for (let index = 0; index <10; index++) {
-        gubbeSprite.y -= 5;
-         await sleep(index * 5);
-    }
-      
+        for (let index = 0; index < 10; index++) {
+            gubbeSprite.y -= 5;
+            await sleep(index * 5);
+        }
+
 });
+
+
 
