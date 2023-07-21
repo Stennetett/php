@@ -2,7 +2,9 @@
 
 
 const Application = PIXI.Application;
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 const app = new Application(
     {
 
@@ -19,6 +21,7 @@ document.body.appendChild(app.view);
 
 
 const Graphics = PIXI.Graphics;
+/*
 const rectangle = new Graphics();
 rectangle.beginFill("#FFFFFF")
     .drawRect(200, 200, 100, 120)
@@ -31,7 +34,7 @@ app.stage.addChild(rectangle);
 const circle = new Graphics();
 circle.beginFill(0xff00fa).drawCircle(440, 100, 80)
 app.stage.addChild(circle);
-
+*/
 const style = new PIXI.TextStyle({
     fontFamily: "Montserrat",
     fontSize: 200,
@@ -46,17 +49,36 @@ myText.style.wordWrap = true;
 myText.style.wordWrapWidth = 100;
 app.ticker.add(delta => loop(delta))
 
+
+var rect = new Graphics();
+
 function loop(delta) {
 
     number += 1;
     // gubbeSprite.x += 0.2;
-    gubbeSprite.rotation += 0.1;
-    const rect = new Graphics();
-    rect.beginFill("#FFFFFF")
-        .drawRect(Math.random() * app.screen.width, Math.random() * app.screen.height, 3, 3)
-        .endFill();
-    app.stage.addChild(rect);
-    console.log(number);
+    //gubbeSprite.rotation += 0.1;
+    if (number == 150) {
+
+        rect.beginFill("#FFFFFF")
+            .drawRect(Math.random() * app.screen.width, Math.random() * app.screen.height, 10, 10)
+            .endFill();
+        rect.interactive = true;
+        rect.on("pointerdown", () => {
+            console.log("yoo");
+            rect.clear();
+        }
+        );
+
+        app.stage.addChild(rect);
+        number = 0
+
+
+
+
+
+    }
+
+
 
 
 }
@@ -66,8 +88,8 @@ function loop(delta) {
 const gubbeSprite = PIXI.Sprite.from("./images/profile-icon.gif");
 gubbeSprite.x = 200;
 gubbeSprite.y = 200;
-gubbeSprite.scale.x += -0.5;
-gubbeSprite.scale.y += -0.5;
+gubbeSprite.scale.x += -1;
+gubbeSprite.scale.y += -1;
 //middle of image (rotation from middle)
 gubbeSprite.anchor.x = 0.5;
 gubbeSprite.anchor.y = 0.5;
@@ -107,9 +129,7 @@ gubbeSprite.on('pointerdown', ondragStart)
     .on('pointermove', ondragMove);
 
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 
 document.addEventListener('keydown', async function (e) {
     if (e.key === 'ArrowRight')
@@ -140,6 +160,5 @@ document.addEventListener('keydown', async function (e) {
         }
 
 });
-
 
 
